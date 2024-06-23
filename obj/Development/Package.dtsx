@@ -1,0 +1,2970 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/2/2023 11:41:28 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-N3QTH9K"
+  DTS:CreatorName="DESKTOP-N3QTH9K\Dikky Rahmad"
+  DTS:DTSID="{D94B9381-4F73-4FF6-9E2E-5F5026F7E98D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{A1C372BC-F05F-4CFB-A096-F61EEF8ABF00}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{13168B51-F2FA-4495-AF6A-03A5011C51CE}"
+      DTS:ObjectName="192.168.100.138,1433.rental_mobilDW.LaptopHp">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.100.138,1433;User ID=LaptopHp;Initial Catalog=rental_mobilDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package-{13168B51-F2FA-4495-AF6A-03A5011C51CE}192.168.100.138,1433.rental_mobilDW.LaptopHp;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3z3/8iRQHE2rq49ojD0rFgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACjy5L7HFjHV+z63bB369CgGFIAyxCVo5nOKwiGvDSFjgAAAAAOgAAAAAIAACAAAADuvat6PfiWidc1unB8JUEgNHWrNUnaeBvGBahMvN/7KBAAAAAx+w/Xj4RdbmtCN0logvFdQAAAAMTEmyOgi6CYPCpSW90guIYQXrSsS6S03pBjNjwwyRs8KBsmbZ9TPGVqxhEaBgVa5YPJ96rSgLGNDD5AGYvCTaA</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8F582A04-1052-4890-84F2-C0DA5A9104B0}"
+      DTS:ObjectName="DESKTOP-N3QTH9K.rentalMobil">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-N3QTH9K;Initial Catalog=rentalMobil;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{8F582A04-1052-4890-84F2-C0DA5A9104B0}DESKTOP-N3QTH9K.rentalMobil;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tabel DimCabang"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1010CE40-D0CA-4F87-A705-7B9966F1D556}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tabel DimCabang">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimCabang\Kosongkan Tabel DimCabang"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2F164842-9E70-496F-B348-9D728CB6CE2C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kosongkan Tabel DimCabang"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{13168B51-F2FA-4495-AF6A-03A5011C51CE}"
+              SQLTask:SqlStatementSource="DELETE FROM dbo.DimCabang" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimCabang\Load ke DimLokasi"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A3502C61-FB90-4F22-A373-ADB47E67D1FC}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ke DimLokasi"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input].Columns[KodePos]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KodePos"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[KodePos]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input].Columns[Alamat]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Alamat"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Alamat]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input].Columns[Wilayah]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Wilayah"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Wilayah]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input].Columns[Kota]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Kota"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Kota]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[KodePos (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[KodePos (dikonversi)]"
+                          name="KodePos (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[KodePos]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Alamat (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Alamat (dikonversi)]"
+                          name="Alamat (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Alamat]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Wilayah (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Wilayah (dikonversi)]"
+                          name="Wilayah (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Wilayah]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Kota (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Kota (dikonversi)]"
+                          name="Kota (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Kota]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Tabel Cabang di OLTP"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Cabang]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[KodePos]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[KodePos]"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[KodePos]"
+                          name="KodePos"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Alamat]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Alamat]"
+                          length="255"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Alamat]"
+                          name="Alamat"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Wilayah]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Wilayah]"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Wilayah]"
+                          name="Wilayah"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Kota]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Kota]"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].Columns[Kota]"
+                          name="Kota"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[KodePos]"
+                          dataType="wstr"
+                          length="50"
+                          name="KodePos" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Alamat]"
+                          dataType="wstr"
+                          length="255"
+                          name="Alamat" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Wilayah]"
+                          dataType="wstr"
+                          length="50"
+                          name="Wilayah" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Kota]"
+                          dataType="wstr"
+                          length="50"
+                          name="Kota" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[KodePos]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[KodePos]"
+                          name="KodePos" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Alamat]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Alamat]"
+                          name="Alamat" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Wilayah]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Wilayah]"
+                          name="Wilayah" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Kota]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[Kota]"
+                          name="Kota" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Tabel DimCabang di DW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimCabang]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      connectionManagerRefId="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].Columns[KodePos (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="KodePos (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[KodePos (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].Columns[Alamat (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Alamat (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[alamat]"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Alamat (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].Columns[Wilayah (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Wilayah (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[wilayah]"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Wilayah (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].Columns[Kota (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Kota (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[kota]"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output].Columns[Kota (dikonversi)]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="altkey" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[alamat]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="alamat" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[wilayah]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="wilayah" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input].ExternalColumns[kota]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="kota" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Tabel DimCabang\Load ke DimLokasi.Paths[Data Conversion Output]"
+                  endId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Tabel DimCabang\Load ke DimLokasi.Paths[OLE DB Source Output]"
+                  endId="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tabel DimCabang.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{92EAE548-9D7B-45B5-B43F-D1E1A2B7D52B}"
+          DTS:From="Package\Tabel DimCabang\Kosongkan Tabel DimCabang"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tabel DimCabang\Load ke DimLokasi" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tabel DimKategori"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{3B7A8C9D-5C76-4541-8E97-1AD9D42C3576}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tabel DimKategori">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimKategori\Kosongkan Tabel DimKategori"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{366FC83D-52D4-4063-BFA3-F1F9981D4B92}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kosongkan Tabel DimKategori"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{13168B51-F2FA-4495-AF6A-03A5011C51CE}"
+              SQLTask:SqlStatementSource="DELETE FROM dbo.DimKategori" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimKategori\Load ke DimKategori"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5A117FE9-09D5-4409-ACF4-66CFF2E9FB71}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ke DimKategori"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input].Columns[Deskripsi]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Deskripsi"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi]" />
+                        <inputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input].Columns[Tipe]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Tipe"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Tipe]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Deskripsi (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Deskripsi (dikonversi)]"
+                          name="Deskripsi (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Tipe  (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Tipe  (dikonversi)]"
+                          name="Tipe  (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Tipe]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Tabel Kategori_Mobil di DW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimKategori]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      connectionManagerRefId="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].Columns[Tipe  (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Tipe  (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Tipe  (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].Columns[Deskripsi (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Deskripsi (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[deskripsi]"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output].Columns[Deskripsi (dikonversi)]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="altkey" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[deskripsi]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="deskripsi" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Tabel Kategori_Mobil di OLTP"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Kategori_Mobil]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Tipe]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Tipe]"
+                          length="50"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Tipe]"
+                          name="Tipe"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Deskripsi]"
+                          length="255"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi]"
+                          name="Deskripsi"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Tipe]"
+                          dataType="wstr"
+                          length="50"
+                          name="Tipe" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Deskripsi]"
+                          dataType="wstr"
+                          length="255"
+                          name="Deskripsi" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Tipe]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Tipe]"
+                          name="Tipe" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Deskripsi]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Deskripsi]"
+                          name="Deskripsi" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Tabel DimKategori\Load ke DimKategori.Paths[Data Conversion Output]"
+                  endId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Tabel DimKategori\Load ke DimKategori.Paths[OLE DB Source Output]"
+                  endId="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tabel DimKategori.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{CB392748-6FB1-4D70-8423-D654E7A502CF}"
+          DTS:From="Package\Tabel DimKategori\Kosongkan Tabel DimKategori"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tabel DimKategori\Load ke DimKategori" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tabel DimMobil"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A5F7D21C-A1AB-4567-9E0C-6E7457D6037F}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tabel DimMobil">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimMobil\Kosongkan Tabel DimMobil"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EEE4110C-D4C8-481C-AA08-B9FC8AB4EDF3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kosongkan Tabel DimMobil"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{13168B51-F2FA-4495-AF6A-03A5011C51CE}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="DELETE FROM dbo.DimMobil" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimMobil\Load ke Tabel DimMobil"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{01E24C2D-DDAF-4668-BC63-AC632E8C67C3}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ke Tabel DimMobil"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input].Columns[Model]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Model"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Model]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input].Columns[Brand]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Brand"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Brand]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input].Columns[Warna]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Warna"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Warna]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input].Columns[Harga_Sewa]"
+                          cachedDataType="numeric"
+                          cachedName="Harga_Sewa"
+                          cachedPrecision="18"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Harga_Sewa]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input].Columns[Kode]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Kode"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Kode]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Model (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Model (dikonversi)]"
+                          name="Model (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Model]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Brand  (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Brand  (dikonversi)]"
+                          name="Brand  (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Brand]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Warna  (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Warna  (dikonversi)]"
+                          name="Warna  (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Warna]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Harga_Sewa  (dikonversi)]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Harga_Sewa  (dikonversi)]"
+                          name="Harga_Sewa  (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Harga_Sewa]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Kode  (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Kode  (dikonversi)]"
+                          name="Kode  (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Kode]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Tabel DimMobil di DW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimMobil]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      connectionManagerRefId="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].Columns[Kode  (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Kode  (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Kode  (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].Columns[Model (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Model (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Model (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].Columns[Brand  (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Brand  (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[brand]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Brand  (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].Columns[Warna  (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Warna  (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[warna]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Warna  (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].Columns[Harga_Sewa  (dikonversi)]"
+                          cachedDataType="cy"
+                          cachedName="Harga_Sewa  (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[harga]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output].Columns[Harga_Sewa  (dikonversi)]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="altkey" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="model" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[brand]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="brand" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[warna]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="warna" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input].ExternalColumns[harga]"
+                          dataType="cy"
+                          name="harga" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Tabel Mobil di OLTP"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Mobil]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Model]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Model]"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Model]"
+                          name="Model"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Brand]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Brand]"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Brand]"
+                          name="Brand"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi_Mobil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Deskripsi_Mobil]"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Deskripsi_Mobil]"
+                          name="Deskripsi_Mobil"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Warna]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Warna]"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Warna]"
+                          name="Warna"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Harga_Sewa]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Harga_Sewa]"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Harga_Sewa]"
+                          name="Harga_Sewa"
+                          precision="18"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Kode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Kode]"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[Kode]"
+                          name="Kode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[TipeKategori]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[TipeKategori]"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[TipeKategori]"
+                          name="TipeKategori"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[KodePosCabang]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[KodePosCabang]"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].Columns[KodePosCabang]"
+                          name="KodePosCabang"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Model]"
+                          dataType="wstr"
+                          length="255"
+                          name="Model" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Brand]"
+                          dataType="wstr"
+                          length="255"
+                          name="Brand" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Deskripsi_Mobil]"
+                          dataType="wstr"
+                          length="255"
+                          name="Deskripsi_Mobil" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Warna]"
+                          dataType="wstr"
+                          length="50"
+                          name="Warna" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Harga_Sewa]"
+                          dataType="numeric"
+                          name="Harga_Sewa"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Kode]"
+                          dataType="wstr"
+                          length="50"
+                          name="Kode" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[TipeKategori]"
+                          dataType="wstr"
+                          length="50"
+                          name="TipeKategori" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output].ExternalColumns[KodePosCabang]"
+                          dataType="wstr"
+                          length="50"
+                          name="KodePosCabang" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Kode]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Kode]"
+                          name="Kode" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Deskripsi_Mobil]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Deskripsi_Mobil]"
+                          name="Deskripsi_Mobil" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Model]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Model]"
+                          name="Model" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Brand]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Brand]"
+                          name="Brand" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Warna]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Warna]"
+                          name="Warna" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Harga_Sewa]"
+                          dataType="numeric"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[Harga_Sewa]"
+                          name="Harga_Sewa"
+                          precision="18" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[TipeKategori]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[TipeKategori]"
+                          name="TipeKategori" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[KodePosCabang]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[KodePosCabang]"
+                          name="KodePosCabang" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Tabel DimMobil\Load ke Tabel DimMobil.Paths[Data Conversion Output]"
+                  endId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Tabel DimMobil\Load ke Tabel DimMobil.Paths[OLE DB Source Output]"
+                  endId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tabel DimMobil.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{94205B19-C484-4C17-B1A3-427B5AFCC5D4}"
+          DTS:From="Package\Tabel DimMobil\Kosongkan Tabel DimMobil"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tabel DimMobil\Load ke Tabel DimMobil" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tabel DimPelanggan"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0A54F796-EF86-43DE-8C40-B22EEE798AA3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tabel DimPelanggan">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimPelanggan\Kosongkan Tabel DimPelanggan"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5B716478-78F9-4BD4-9625-52530812974E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Kosongkan Tabel DimPelanggan"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{13168B51-F2FA-4495-AF6A-03A5011C51CE}"
+              SQLTask:SqlStatementSource="DELETE FROM dbo.DimPelanggan" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tabel DimPelanggan\Load ke DimPelanggan"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{54EF6E69-B6F4-478B-AACF-52DC29D11D0C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load ke DimPelanggan"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input].Columns[Nama]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nama"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nama]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input].Columns[Email]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Email"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input].Columns[Nomor_Telepon]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nomor_Telepon"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nomor_Telepon]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input].Columns[DomisiliKecamatan]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="DomisiliKecamatan"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKecamatan]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input].Columns[DomisiliKota]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="DomisiliKota"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKota]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nama (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nama (dikonversi)]"
+                          name="Nama (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nama]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Email (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Email (dikonversi)]"
+                          name="Email (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nomor_Telepon (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nomor_Telepon (dikonversi)]"
+                          name="Nomor_Telepon (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nomor_Telepon]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKecamatan (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKecamatan (dikonversi)]"
+                          name="DomisiliKecamatan (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKecamatan]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKota (dikonversi)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKota (dikonversi)]"
+                          name="DomisiliKota (dikonversi)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKota]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Tabel DimPelanggan di DW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimPelanggan]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      connectionManagerRefId="Package.ConnectionManagers[192.168.100.138,1433.rental_mobilDW.LaptopHp]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].Columns[Nama (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Nama (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nama (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].Columns[Email (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Email (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Email (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].Columns[Nomor_Telepon (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Nomor_Telepon (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[no_telp]"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[Nomor_Telepon (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].Columns[DomisiliKecamatan (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="DomisiliKecamatan (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[domisiliKecamatan]"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKecamatan (dikonversi)]" />
+                        <inputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].Columns[DomisiliKota (dikonversi)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="DomisiliKota (dikonversi)"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[domisiliKota]"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output].Columns[DomisiliKota (dikonversi)]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[altkey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="altkey" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[no_telp]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="no_telp" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[domisiliKecamatan]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="domisiliKecamatan" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input].ExternalColumns[domisiliKota]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="domisiliKota" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Tabel Pelanggan di OLTP"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Pelanggan]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-N3QTH9K.rentalMobil]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nama]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nama]"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nama]"
+                          name="Nama"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Email]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nomor_Telepon]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nomor_Telepon]"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[Nomor_Telepon]"
+                          name="Nomor_Telepon"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKecamatan]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[DomisiliKecamatan]"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKecamatan]"
+                          name="DomisiliKecamatan"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKota]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[DomisiliKota]"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].Columns[DomisiliKota]"
+                          name="DomisiliKota"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nama]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nama" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          dataType="wstr"
+                          length="255"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nomor_Telepon]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nomor_Telepon" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[DomisiliKecamatan]"
+                          dataType="wstr"
+                          length="255"
+                          name="DomisiliKecamatan" />
+                        <externalMetadataColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output].ExternalColumns[DomisiliKota]"
+                          dataType="wstr"
+                          length="255"
+                          name="DomisiliKota" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Nama]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Nama]"
+                          name="Nama" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Nomor_Telepon]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[Nomor_Telepon]"
+                          name="Nomor_Telepon" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[DomisiliKecamatan]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[DomisiliKecamatan]"
+                          name="DomisiliKecamatan" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[DomisiliKota]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[DomisiliKota]"
+                          name="DomisiliKota" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Tabel DimPelanggan\Load ke DimPelanggan.Paths[Data Conversion Output]"
+                  endId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Tabel DimPelanggan\Load ke DimPelanggan.Paths[OLE DB Source Output]"
+                  endId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tabel DimPelanggan.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3EEBDB1F-A08C-4E21-BD54-8234FE5B49A1}"
+          DTS:From="Package\Tabel DimPelanggan\Kosongkan Tabel DimPelanggan"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tabel DimPelanggan\Load ke DimPelanggan" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Tabel DimCabang\Kosongkan Tabel DimCabang"
+          TopLeft="22,4" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Tabel DimCabang\Load ke DimLokasi"
+          TopLeft="44,77" />
+        <EdgeLayout
+          Id="Package\Tabel DimCabang.PrecedenceConstraints[Constraint]"
+          TopLeft="132.5,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="253,174"
+          Size="253,217"
+          Id="Package\Tabel DimCabang"
+          TopLeft="625,38" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Tabel DimKategori\Kosongkan Tabel DimKategori"
+          TopLeft="15,5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Tabel DimKategori\Load ke DimKategori"
+          TopLeft="39,90" />
+        <EdgeLayout
+          Id="Package\Tabel DimKategori.PrecedenceConstraints[Constraint]"
+          TopLeft="129.5,47">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="263,187"
+          Size="263,230"
+          Id="Package\Tabel DimKategori"
+          TopLeft="325,33" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Tabel DimMobil\Kosongkan Tabel DimMobil"
+          TopLeft="8,10" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil"
+          TopLeft="12,99" />
+        <EdgeLayout
+          Id="Package\Tabel DimMobil.PrecedenceConstraints[Constraint]"
+          TopLeft="112.5,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="227,196"
+          Size="227,239"
+          Id="Package\Tabel DimMobil"
+          TopLeft="74,29" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Tabel DimPelanggan\Kosongkan Tabel DimPelanggan"
+          TopLeft="17,10" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan"
+          TopLeft="44,84" />
+        <EdgeLayout
+          Id="Package\Tabel DimPelanggan.PrecedenceConstraints[Constraint]"
+          TopLeft="138.75,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="262,180"
+          Size="262,223"
+          Id="Package\Tabel DimPelanggan"
+          TopLeft="313,296" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tabel DimCabang\Load ke DimLokasi">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW"
+          TopLeft="334,309" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP"
+          TopLeft="260,102" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tabel DimCabang\Load ke DimLokasi\Data Conversion"
+          TopLeft="317,212" />
+        <EdgeLayout
+          Id="Package\Tabel DimCabang\Load ke DimLokasi.Paths[OLE DB Source Output]"
+          TopLeft="355.5,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42,68"
+              Start="0,0"
+              End="42,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="38,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38,34"
+                    Point2="42,34"
+                    Point3="42,38" />
+                  <mssgle:LineSegment
+                    End="42,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabel DimCabang\Load ke DimLokasi.Paths[Data Conversion Output]"
+          TopLeft="397.5,254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.5,55"
+              Start="0,0"
+              End="36.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="32.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.5,27.5"
+                    Point2="36.5,27.5"
+                    Point3="36.5,31.5" />
+                  <mssgle:LineSegment
+                    End="36.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimCabang\Load ke DimLokasi\Tabel DimCabang di DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimCabang\Load ke DimLokasi\Tabel Cabang di OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tabel DimKategori\Load ke DimKategori">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP"
+          TopLeft="348,110" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tabel DimKategori\Load ke DimKategori\Data Conversion"
+          TopLeft="387,217" />
+        <EdgeLayout
+          Id="Package\Tabel DimKategori\Load ke DimKategori.Paths[OLE DB Source Output]"
+          TopLeft="464.25,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW"
+          TopLeft="336,318" />
+        <EdgeLayout
+          Id="Package\Tabel DimKategori\Load ke DimKategori.Paths[Data Conversion Output]"
+          TopLeft="467.5,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-43,59"
+              Start="0,0"
+              End="-43,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
+                  <mssgle:LineSegment
+                    End="-39,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39,29.5"
+                    Point2="-43,29.5"
+                    Point3="-43,33.5" />
+                  <mssgle:LineSegment
+                    End="-43,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tabel DimMobil\Load ke Tabel DimMobil">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP"
+          TopLeft="247,103" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil\Data Conversion"
+          TopLeft="272,182" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW"
+          TopLeft="257,271" />
+        <EdgeLayout
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil.Paths[OLE DB Source Output]"
+          TopLeft="336.5,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16,37"
+              Start="0,0"
+              End="16,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="12,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,18.5"
+                    Point2="16,18.5"
+                    Point3="16,22.5" />
+                  <mssgle:LineSegment
+                    End="16,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabel DimMobil\Load ke Tabel DimMobil.Paths[Data Conversion Output]"
+          TopLeft="351.75,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel Mobil di OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimMobil\Load ke Tabel DimMobil\Tabel DimMobil di DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tabel DimPelanggan\Load ke DimPelanggan">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP"
+          TopLeft="218,106" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan\Data Conversion"
+          TopLeft="319,216" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW"
+          TopLeft="353,304" />
+        <EdgeLayout
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan.Paths[OLE DB Source Output]"
+          TopLeft="320.5,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79,68"
+              Start="0,0"
+              End="79,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="75,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75,34"
+                    Point2="79,34"
+                    Point3="79,38" />
+                  <mssgle:LineSegment
+                    End="79,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tabel DimPelanggan\Load ke DimPelanggan.Paths[Data Conversion Output]"
+          TopLeft="399.5,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61,46"
+              Start="0,0"
+              End="61,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="57,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57,23"
+                    Point2="61,23"
+                    Point3="61,27" />
+                  <mssgle:LineSegment
+                    End="61,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel Pelanggan di OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimPelanggan\Load ke DimPelanggan\Tabel DimPelanggan di DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tabel DimKategori\Load ke DimKategori\Tabel Kategori_Mobil di DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
